@@ -224,7 +224,7 @@ export default function EnhancedChatInterface({ conversationId }: ChatInterfaceP
 
           toast.loading('Analyzing image with vision AI...', { id: 'vision' })
 
-          const response = await fetch('/api/gemini/vision', {
+          const response = await fetch('https://pawa-backend.onrender.com/gemini/vision', {
             method: 'POST',
             body: formData,
           })
@@ -248,7 +248,7 @@ export default function EnhancedChatInterface({ conversationId }: ChatInterfaceP
           formData.append('file', selectedFile)
           formData.append('message', userInput)
 
-          const response = await fetch('/api/gemini/upload', {
+          const response = await fetch('https://pawa-backend.onrender.com/gemini/upload', {
             method: 'POST',
             body: formData,
           })
@@ -276,7 +276,7 @@ export default function EnhancedChatInterface({ conversationId }: ChatInterfaceP
           content: msg.content
         })) || []
 
-        const response = await fetch('/api/gemini/chat', {
+        const response = await fetch('https://pawa-backend.onrender.com/gemini/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
