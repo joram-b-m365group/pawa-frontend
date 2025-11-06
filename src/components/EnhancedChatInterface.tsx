@@ -224,7 +224,7 @@ export default function EnhancedChatInterface({ conversationId }: ChatInterfaceP
 
           toast.loading('Analyzing image with vision AI...', { id: 'vision' })
 
-          const response = await fetch('http://localhost:8000/vision', {
+          const response = await fetch('https://pawa-backend.onrender.com/gemini/vision', {
             method: 'POST',
             body: formData,
           })
@@ -248,7 +248,7 @@ export default function EnhancedChatInterface({ conversationId }: ChatInterfaceP
           formData.append('file', selectedFile)
           formData.append('message', userInput)
 
-          const response = await fetch('http://localhost:8000/upload', {
+          const response = await fetch('https://pawa-backend.onrender.com/gemini/upload', {
             method: 'POST',
             body: formData,
           })
@@ -276,7 +276,7 @@ export default function EnhancedChatInterface({ conversationId }: ChatInterfaceP
           content: msg.content
         })) || []
 
-        const response = await fetch('http://localhost:8000/chat', {
+        const response = await fetch('https://pawa-backend.onrender.com/gemini/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -284,7 +284,8 @@ export default function EnhancedChatInterface({ conversationId }: ChatInterfaceP
           body: JSON.stringify({
             message: userInput,
             conversation_history: conversationHistory,
-            conversation_id: convId,
+            model: 'gemini-2.0-flash-exp',
+            temperature: 0.7
           }),
         })
 
