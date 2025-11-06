@@ -12,10 +12,10 @@ import { useCodeStore } from './store/codeStore'
 import { Crown, MessageSquare, Code2, FolderKanban } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-const API_URL = 'http://localhost:8001'
+const API_URL = import.meta.env.VITE_API_URL || 'https://pawa-backend.onrender.com'
 
 function App() {
-  const [showLanding, setShowLanding] = useState(true)
+  const [showLanding, setShowLanding] = useState(false)
   const [activeView, setActiveView] = useState<'chat' | 'code'>('chat')
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [pricingOpen, setPricingOpen] = useState(false)
